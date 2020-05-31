@@ -19,7 +19,7 @@ function App() {
     <React.Fragment>
       <Switch>
         <Navbar>
-        <Route exact path="/" component={LandingPage}/>
+          <Route exact path="/" component={LandingPage}/>
         </Navbar>
       </Switch>
     </React.Fragment>
