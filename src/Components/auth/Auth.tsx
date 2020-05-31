@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import * as Constants from "../../Constants";
 
 export const fetchTourexAPIToken = (): Promise<Response> => {
@@ -18,6 +18,50 @@ export const fetchTourexAPIToken = (): Promise<Response> => {
           // console.log("Auth.tsx, function grabTourexAPIToken, api ERROR: " + error);
           resolve(err);
         });
+    } catch (error) {
+      // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
+    }
+  });
+};
+
+export const fetchTourAsJSONDataByBearerToken = (
+  token: string
+): Promise<JSON> => {
+  return new Promise((resolve, reject) => {
+    try {
+      axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+      axios.get(Constants.TOUREX_TOUR_URL).then(
+        (response) => {
+          console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          console.log(error);
+          resolve(error);
+        }
+      );
+    } catch (error) {
+      // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
+    }
+  });
+};
+
+export const fetchTourGuideAsJSONDataByBearerToken = (
+  token: string
+): Promise<JSON> => {
+  return new Promise((resolve, reject) => {
+    try {
+      axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+      axios.get(Constants.TOUREX_TOUR_GUIDE_URL).then(
+        (response) => {
+          console.log(response.data);
+          resolve(response.data);
+        },
+        (error) => {
+          console.log(error);
+          resolve(error);
+        }
+      );
     } catch (error) {
       // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
     }
