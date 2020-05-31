@@ -2,6 +2,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+## Simple way of running it :
+
+Download Visual studio code
+Open the project directory
+Install 'Live Server' Plugins
+Click 'Go Live' button on the bottom right of the visual studio
+
+
+## Other way
 In the project directory, you can run:
 
 ### `yarn start`
