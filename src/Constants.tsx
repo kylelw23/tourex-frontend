@@ -1,4 +1,9 @@
-export const AUTH_TOKEN_URL = "http://localhost:8080/oauth/token";
+// Main URL
+const LOCAL_HOST_URL = "http://localhost:8080";
+
+/******************************************************************************/
+// Authentication url, body and config.
+export const AUTH_TOKEN_URL = LOCAL_HOST_URL + "/oauth/token";
 
 export const AUTH_FORM_DATA = require("querystring").stringify({
   grant_type: "password",
@@ -13,3 +18,9 @@ export const AUTH_USER_AND_PASS = {
     password: "spring-security-oauth2-read-write-client-password1234",
   },
 };
+
+/******************************************************************************/
+// Urls
+export const TOUREX_ACCOUNT_URL = LOCAL_HOST_URL + "/account";
+export const TOUREX_TOUR_URL = LOCAL_HOST_URL + "/tour";
+export const TOUREX_TOUR_GUIDE_URL = LOCAL_HOST_URL + "/tourguide";
