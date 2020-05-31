@@ -4,10 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Simple way of running it :
 
-Download Visual studio code
-Open the project directory
-Install 'Live Server' Plugins
-Click 'Go Live' button on the bottom right of the visual studio
+Download Visual studio code.<br />
+Open the project directory.<br />
+Install 'Live Server' Plugins.<br />
+Click 'Go Live' button on the bottom right of the visual studio.<br />
 
 
 ## Other way
