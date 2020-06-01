@@ -6,7 +6,9 @@ export default class LandingPage extends React.Component {
   render() {
     return (
       <>
-	  <Carousel></Carousel>
+	  <Carousel>
+
+	  </Carousel>
 		<div className="row">
             <div className="col-lg-6">
               <div
@@ -14,9 +16,9 @@ export default class LandingPage extends React.Component {
                 style={{ backgroundColor: "#f5f5f5", opacity: 0.9 }}
               >
                 <div className="card-body">
-                  <h1 class="display-4">
+                  <h3 class="display-4">
                     Great things never came from comfort zones!
-                  </h1>
+                  </h3>
                   <hr class="my-4" />
                   <p>
                     Lorem ipsum, or lipsum as it is sometimes known, is dummy
