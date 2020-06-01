@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-};
+}
 /* globals */
 
 .circle {
@@ -12,4 +12,8 @@
   background: black;
   background-color: red;
   z-index: 16;
+}
+
+.bgRed {
+  background-color: red;
 }
