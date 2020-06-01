@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
+import "./App.css";
 import "./Ultil.css";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
@@ -19,7 +20,6 @@ function App() {
     <React.Fragment>
       <Switch>
         <>
-          {/* This <> fragment fixed the 'hello world' not showing. */}
           <Navbar />
           <Route exact path="/" component={LandingPage} />
         </>
