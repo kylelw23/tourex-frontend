@@ -9,17 +9,10 @@ class TourGuideProvider extends Component {
         tourguideDetail: [],
         isLoaded: false,
     }
-    
-
     componentDidMount() {
         fetch('https://jsonplaceholder.typicode.com/todos')
         .then(res => res.json())
-        .then(json => {
-            this.setState({
-                isLoaded:true,
-                tourguides: json,
-            })
-        });
+        .then(json => console.log(json));
     }
     render() {
         return (
