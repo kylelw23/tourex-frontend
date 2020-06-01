@@ -12,6 +12,14 @@ export const AUTH_FORM_DATA = require("querystring").stringify({
   client_id: "spring-security-oauth2-read-write-client",
 });
 
+export const AUTH_TOKEN_USER_SIGN_IN = (userName: string, password: string) =>
+  require("querystring").stringify({
+    grant_type: "password",
+    username: userName,
+    password: password,
+    client_id: "spring-security-oauth2-read-write-client",
+  });
+
 export const AUTH_USER_AND_PASS = {
   auth: {
     username: "spring-security-oauth2-read-write-client",
