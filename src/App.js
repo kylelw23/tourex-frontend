@@ -5,7 +5,6 @@ import { Route, Switch } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
 // import { fetchTourexAPIToken } from "./Components/auth/Auth";
 import Navbar from "./Components/NavBar";
-import Banner from "./Components/Banner";
 
 function App() {
   const [getToken, setToken] = React.useState("");
