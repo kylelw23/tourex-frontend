@@ -11,9 +11,9 @@ export default function TourGuideCard() {
             </div>
             <div class="col-lg-6">
                 <div class="card-block px-2">
-                    <h4 class="card-title">Title</h4>
+                    <h4 class="card-title">Tour Guide Name</h4>
                     <p class="card-text">Description</p>
-                    <a href="#" class="btn btn-primary">BUTTON</a>
+                    <a href="#" class="btn btn-primary">Contact</a>
                 </div>
             </div>
         </div>

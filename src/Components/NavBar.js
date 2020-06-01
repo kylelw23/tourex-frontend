@@ -10,19 +10,12 @@ global.jQuery = $;
 export default class Navbar extends React.Component {
     constructor(props) {
         super(props);
-
-
     }
-
     componentDidMount() {
         $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').trigger('focus')
           })
-
-
-
     }
-
     render()
     {
         return (
