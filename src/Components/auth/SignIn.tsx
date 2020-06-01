@@ -11,16 +11,11 @@ interface IState {
   error: string;
   hideSubmitBtn: boolean;
 }
-export interface IErrors {
-  /* The validation error messages for each field (key is the field name */
-  [key: string]: string;
-}
 
 export default class SignIn extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
 
-    const errors: IErrors = {};
     this.state = {
       userName: "",
       password: "",
