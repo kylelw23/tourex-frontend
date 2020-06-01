@@ -11,16 +11,16 @@ export default class SignIn extends React.Component {
                         <div className='m-4'>
                             <div>
                                 <h1 className='display-5 m-b-10'>Login in to Tourex</h1>
-                                <label for="message-text" class="col-form-label">Log in to add things to your 
+                                <label htmlFor="welcomeMessage" class="col-form-label">Log in to add things to your 
                                         wishlist and access your bookings from any device.</label>
                             </div>
                             <form>
                             <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Email</label>
+                                <label htmlFor="email-name" class="col-form-label">Email</label>
                                 <input type="text" class="form-control" id="email-name"/>
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">Password</label>
+                                <label htmlFor="password-text" class="col-form-label">Password</label>
                                 <input type="text" class="form-control" id="password"/>
                             </div>
                             <button type="button" className="btn btn-primary m-t-10">Sign In</button>

@@ -31,7 +31,7 @@ export default class SignUp extends React.Component {
                             </div>
                             <div class="form-check m-l-8 m-t-8 m-b-8">
                                 <input class="form-check-input" type="checkbox" id="gridCheck"/>
-                                <label class="form-check-label" for="gridCheck">
+                                <label class="form-check-label" htmlFor="gridCheck">
                                 To sign up an account, you should agree to our Term and Conditions and Privacy Policy
                                 </label>
                             </div>
