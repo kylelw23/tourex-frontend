@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import * as Constants from "./Constants";
+import { fetchTourGuideAsJSONDataByBearerToken, fetchTourAsJSONDataByBearerToken 
+,fetchAccountAsJSONDataByBearerToken} from './../Components/auth/Auth';
 
 const TourexContext = React.createContext();
 
@@ -7,11 +10,19 @@ class TourexProvider extends Component {
     tourguides: [],
     sortedTourguides: [],
     tourguideDetail: [],
+    tours: [],
+    sortedTours: [],
+    tourDetail: [],
+    booking: [],
     isLoaded: false,
+    isTour: false,
+    isTourGuide: false,
+    tourGuideAccount: false,
+    userAccount: false,
     // isUserLoggedIn: false,
   };
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/todos")
+    fetch(Constants.TOUREX_TOUR_GUIDE_URL)
       .then((res) => res.json())
       .then((json) => console.log(json));
   }
