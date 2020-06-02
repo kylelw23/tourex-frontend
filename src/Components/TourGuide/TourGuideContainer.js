@@ -1,11 +1,11 @@
 import React from 'react'
 import TourGuideFilter from './TourGuideFilter'
 import TourGuideList from './TourGuideList'
-import {TourGuideConsumer} from '../../Store/context';
+import {TourexConsumer} from '../../Store/context';
 
 export default function TourGuideContainer() {
     return(
-        <TourGuideConsumer>
+        <TourexConsumer>
             {
                 (value) => {
                     // Desconstruction
@@ -17,6 +17,6 @@ export default function TourGuideContainer() {
                         </div>
                 )
             }}
-        </TourGuideConsumer>
+        </TourexConsumer>
     )
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-const TourGuideContext = React.createContext();
+const TourexContext = React.createContext();
 
-class TourGuideProvider extends Component {
+class TourexProvider extends Component {
     state = {
         tourguides: [],
         sortedTourguides: [],
@@ -16,14 +16,14 @@ class TourGuideProvider extends Component {
     }
     render() {
         return (
-            <TourGuideContext.Provider value={{...this.state}}>
+            <TourexContext.Provider value={{...this.state}}>
                 {this.props.children}
-            </TourGuideContext.Provider>
+            </TourexContext.Provider>
         )
     }
 }
 
 // In order to receive data from children components, use <TourGuideConsumer></TourGuideConsumer>
-const TourGuideConsumer = TourGuideContext.Consumer;
+const TourexConsumer = TourexContext.Consumer;
 
-export {TourGuideContext, TourGuideProvider, TourGuideConsumer};
+export {TourexConsumer, TourexProvider, TourexContext};
