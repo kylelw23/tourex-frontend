@@ -1,9 +1,12 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 // import { Link } from "react-router-dom";
-import SignUp from "./SignUp";
+// import SignUp from "./SignUp";
+import * as Constants from "../../Store/Constants";
 import { fetchUserTokenBySignIn } from "./Auth";
 
-interface IProps {}
+interface IProps {
+  userIsLoggedInHandler: Function;
+}
 interface IState {
   userName: string;
   password: string;
@@ -44,6 +47,9 @@ export default class SignIn extends React.Component<IProps, IState> {
     if (this.validateForm()) {
       const submitSuccess: boolean = await this.submitForm();
       this.setState({ submitSuccess });
+      if (submitSuccess) {
+        window.location.reload();
+      }
     }
 
     this.setState({
@@ -58,16 +64,21 @@ export default class SignIn extends React.Component<IProps, IState> {
 
   private async submitForm(): Promise<boolean> {
     // do api call to check user authentication.
-    let success = await fetchUserTokenBySignIn(
+    let response = await fetchUserTokenBySignIn(
       this.state.userName,
       this.state.password
     );
 
-    if (success !== "Bad credentials" && success) {
-      return true;
-    } else {
-      this.setState({ error: success });
+    if (response == Constants.HTTP_400) {
+      this.setState({ error: "Invalid email or password!" });
       return false;
+    } else if (response == Constants.HTTP_500) {
+      this.setState({
+        error: "Sorry, we are currently experiencing some server problems.",
+      });
+      return false;
+    } else {
+      return true;
     }
   }
 
@@ -89,7 +100,7 @@ export default class SignIn extends React.Component<IProps, IState> {
                       <form onSubmit={(e)=>{this.handleSubmit(e)}}>
                         {submitSuccess && (
                           <div className="alert alert-info" role="alert">
-                            The form was successfully submitted!
+                            Successfully logged in!
                           </div>
                         )}
                         {!submitSuccess && error !== "" && (

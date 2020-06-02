@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import * as Constants from "../../Store/Constants";
 
 export const fetchTourexAPIToken = (): Promise<Response> => {
@@ -25,6 +25,40 @@ export const fetchTourexAPIToken = (): Promise<Response> => {
 };
 
 /*******************************************************************************************/
+// User sign out
+export const userSignOut = (): Promise<boolean> => {
+  // ): Promise<Response> => {
+  return new Promise((resolve, reject) => {
+    try {
+      // let currentUser = JSON.stringify(localStorage.getItem("currentUser")); //will return null if nothing is set.
+      localStorage.removeItem("currentUser");
+      resolve(true);
+    } catch (error) {
+      resolve(false);
+      // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
+    }
+  });
+};
+
+/*******************************************************************************************/
+// User sign out
+export const checkUser = (): Promise<boolean> => {
+  // ): Promise<Response> => {
+  return new Promise((resolve, reject) => {
+    try {
+      let currentUser = JSON.stringify(localStorage.getItem("currentUser"));
+      if (currentUser === "null") {
+        resolve(false);
+      } else {
+        resolve(true);
+      }
+    } catch (error) {
+      // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
+    }
+  });
+};
+
+/*******************************************************************************************/
 // User sign in
 export const fetchUserTokenBySignIn = (
   username: string,
@@ -41,12 +75,13 @@ export const fetchUserTokenBySignIn = (
         )
         .then((response) => {
           // return access_token
-          // resolve(response.data.access_token);
-          resolve(true);
+          localStorage.setItem("currentUser", response.data.access_token);
+          resolve(response.data.access_token);
+          // resolve(true);
         })
         .catch((err) => {
           // console.log("Auth.tsx, function grabTourexAPIToken, api ERROR: " + error);
-          resolve(err.response.data.error_description);
+          resolve(err.request.status);
         });
     } catch (error) {
       // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
