@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import italy from "../Assets/Images/italy_stretched.png";
 
 export default function TourGuideCard() {
     return (
