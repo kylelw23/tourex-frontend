@@ -24,6 +24,8 @@ export const fetchTourexAPIToken = (): Promise<Response> => {
   });
 };
 
+/*******************************************************************************************/
+// User sign in
 export const fetchUserTokenBySignIn = (
   username: string,
   password: string
@@ -45,6 +47,36 @@ export const fetchUserTokenBySignIn = (
         .catch((err) => {
           // console.log("Auth.tsx, function grabTourexAPIToken, api ERROR: " + error);
           resolve(err.response.data.error_description);
+        });
+    } catch (error) {
+      // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
+    }
+  });
+};
+
+/*******************************************************************************************/
+// User sign up
+export const userSignUp = (
+  name: string,
+  email: string,
+  password: string,
+  mobile: string
+): Promise<any> => {
+  // ): Promise<Response> => {
+  return new Promise((resolve, reject) => {
+    try {
+      axios
+        .post(
+          Constants.CREATE_ACCOUNT_URL,
+          Constants.USER_SIGN_UP(name, email, password, mobile),
+          Constants.POST_HEADER_JSON
+        )
+        .then((response) => {
+          resolve(true);
+        })
+        .catch((err) => {
+          console.log(err.request.status == 400);
+          resolve(err.request.status);
         });
     } catch (error) {
       // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);

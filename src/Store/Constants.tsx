@@ -2,6 +2,14 @@
 const LOCAL_HOST_URL = "http://localhost:8080";
 
 /******************************************************************************/
+// Client Error codes
+export const HTTP_400 = 400; //Bad request
+export const HTTP_403 = 403; //Forbidden
+
+// Server Error codes
+export const HTTP_500 = 500; //Internal server error
+
+/******************************************************************************/
 // Authentication url, body and config.
 export const AUTH_TOKEN_URL = LOCAL_HOST_URL + "/oauth/token";
 
@@ -27,6 +35,29 @@ export const AUTH_USER_AND_PASS = {
   },
 };
 
+/******************************************************************************/
+// Create new user account
+export const CREATE_ACCOUNT_URL = LOCAL_HOST_URL + "/account";
+
+export const USER_SIGN_UP = (
+  name: string,
+  email: string,
+  password: string,
+  mobile: string
+) => {
+  return {
+    name: name,
+    email: email,
+    password: password,
+    mobile: mobile,
+  };
+};
+
+export const POST_HEADER_JSON = {
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
 /******************************************************************************/
 // Urls
 export const TOUREX_ACCOUNT_URL = LOCAL_HOST_URL + "/account";
