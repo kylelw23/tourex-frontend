@@ -46,11 +46,28 @@ export const checkUser = (): Promise<boolean> => {
   // ): Promise<Response> => {
   return new Promise((resolve, reject) => {
     try {
-      let currentUser = JSON.stringify(localStorage.getItem("currentUser"));
-      if (currentUser === "null") {
+      let currentUser = localStorage.getItem("currentUser");
+      if (currentUser === null) {
         resolve(false);
       } else {
         resolve(true);
+      }
+    } catch (error) {
+      // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
+    }
+  });
+};
+
+/*******************************************************************************************/
+// User sign out
+export const grabUserToken = (): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    try {
+      let currentUser = JSON.stringify(localStorage.getItem("currentUser"));
+      if (localStorage.getItem("currentUser") !== null) {
+        resolve(currentUser);
+      } else {
+        resolve("");
       }
     } catch (error) {
       // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
@@ -119,6 +136,8 @@ export const userSignUp = (
   });
 };
 
+// Maybe move all of these functions in another file.
+
 export const fetchTourAsJSONDataByBearerToken = (
   token: string
 ): Promise<JSON> => {
@@ -141,6 +160,46 @@ export const fetchTourAsJSONDataByBearerToken = (
   });
 };
 
+export const fetchTourGuidesAsJSONDataByBearerTokenAndQuery = (
+  query: string
+): Promise<Object> => {
+  return new Promise((resolve, reject) => {
+    try {
+      let token = localStorage.getItem("currentUser");
+      axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+      axios
+        .get(
+          Constants.TOUREX_ACCOUNT_TOUR_GUIDE_QUERY_URL,
+          require("querystring").stringify({
+            query: query,
+          })
+        )
+        .then(
+          (response) => {
+            console.log(response.data);
+            resolve(response.data);
+          },
+          (error) => {
+            console.log("FAIL");
+            console.log(error);
+            resolve({});
+          }
+        );
+    } catch (error) {
+      // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
+    }
+  });
+};
+
+/*******************************************************************************************/
+/*******************************************************************************************/
+/*******************************************************************************************/
+/*******************************************************************************************/
+/*******************************************************************************************/
+/*******************************************************************************************/
+/*******************************************************************************************/
+/*******************************************************************************************/
+// Currently not in use
 export const fetchTourGuideAsJSONDataByBearerToken = (
   token: string
 ): Promise<JSON> => {
