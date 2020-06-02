@@ -4,16 +4,24 @@ import italy from "../Assets/Images/italy_stretched.png";
 
 export default function TourGuideCard() {
     return (
-        <div class="card" style={{width:'30%',padding:'0',margin:'0'}}>
-        <div class="row no-gutters">
+        <div class="card" style={{width:'60%'}}>
+        <div class="row no-gutters stretched-link">
             <div class="col-auto">
                 <img src="//placehold.it/200" class="img-fluid" alt=""/>
             </div>
-            <div class="col-lg-6">
-                <div class="card-block px-2">
+            <div className='m-2'>
+                <div class="card-block px-2 m-l-30" >
                     <h4 class="card-title">Tour Guide Name</h4>
-                    <p class="card-text">Description</p>
-                    <a href="#" class="btn btn-primary">Contact</a>
+                    <p class="card-text">Location</p>
+                    <p class="card-text">description</p>
+                    <div>
+                    <label class="card-text">Reviews: </label>
+                    <label class="card-text">8</label>
+                    </div>
+                   <div>
+                    <label class="card-text">Rating: </label>
+                    <label class="card-text">8</label>
+                   </div>
                 </div>
             </div>
         </div>
