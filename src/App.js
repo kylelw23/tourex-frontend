@@ -5,6 +5,9 @@ import "./Ultil.css";
 import { Route, Switch } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage";
 import TourGuideProfile from "./Pages/TourGuideProfile";
+import TourDetail from "./Pages/TourDetail";
+import UserProfile from "./Pages/UserProfile";
+
 // import { fetchTourexAPIToken } from "./Components/auth/Auth";
 import Navbar from "./Components/NavBar";
 
@@ -23,7 +26,9 @@ function App() {
         <>
           <Navbar />
           <Route exact path="/" component={LandingPage} />
-          <Route path="/TourGuideProfile" component={TourGuideProfile}/>
+          <Route exact path="/TourGuideProfile" component={TourGuideProfile}/>
+          <Route exact path="/TourDetail" component={TourDetail}/>
+          <Route exact path="/UserProfile" component={UserProfile}/>
         </>
       </Switch>
     </React.Fragment>
