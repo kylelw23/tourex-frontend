@@ -16,11 +16,14 @@ class TourGuideProvider extends Component {
     }
     render() {
         return (
-            <TourGuideContext.Provider>
+            <TourGuideContext.Provider value={{...this.state}}>
                 {this.props.children}
             </TourGuideContext.Provider>
         )
     }
 }
 
-export {TourGuideContext, TourGuideProvider};
+// In order to receive data from children components, use <TourGuideConsumer></TourGuideConsumer>
+const TourGuideConsumer = TourGuideContext.Consumer;
+
+export {TourGuideContext, TourGuideProvider, TourGuideConsumer};
