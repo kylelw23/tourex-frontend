@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import SignIn from "./auth/SignIn";
 import SignUp from "./auth/SignUp";
 import { checkUser, userSignOut } from "../Store/APIAction";
@@ -33,7 +33,7 @@ export default class Navbar extends React.Component {
   userSignOutHandler = async () => {
     let success = await userSignOut();
     if (success) {
-      window.location.reload();
+      return <Redirect to="http://localhost:3000" />;
     }
   };
 

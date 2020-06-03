@@ -44,24 +44,31 @@ class TourexProvider extends Component {
     setTourGuides: Function,
     setTours: Function,
     setToggleTourAndTourguideContainer: Function,
-    // isUserLoggedIn: false,
   };
 
   async getJSONAsync() {
-    let jsonTourGuide = await Action.fetchTourGuidesAsJSONDataByBearerTokenAndQuery(
-      "Random"
-    );
-    this.setState({ tourguides: jsonTourGuide });
+    let isUserLoggedIn = await Action.checkUser();
+    if (this.state.toggleTourAndTourguideContainer && isUserLoggedIn) {
+      console.log("searching");
+      let jsonTourGuide = await Action.fetchTourGuidesAsJSONDataByBearerTokenAndQuery(
+        "Random"
+      );
+      this.setState({ tourguides: jsonTourGuide });
+    }
   }
 
   // componentDidMount() {
   //   let tourguides = this.getJSONAsync();
   // }
-  //   getTourGuide = (slug) => {
-  //     let tempRooms = [...this.state.tourguides];
-  //     const tourguide = tempRooms.find(tourguide => tourguide.id === slug);
-  //     return tourguide;
-  // }
+  getTourGuide: Function = (slug: string | number) => {
+    if (this.state.tourguides != null || this.state.tourguides != []) {
+      let tempRooms: Object[] | any[] = [...this.state.tourguides];
+      const tourguide = tempRooms.find((tourguide) => tourguide.id === slug);
+      return tourguide;
+    } else {
+      return null;
+    }
+  };
 
   render() {
     this.getJSONAsync();

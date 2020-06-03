@@ -59,10 +59,21 @@ export const POST_HEADER_JSON = {
   },
 };
 /******************************************************************************/
+// Send query to find tours by search string or dates.
+export const QUERY_TOUR = (query: string, date: boolean) => {
+  return {
+    params: {
+      query: query,
+      date: date,
+    },
+  };
+};
+
+/******************************************************************************/
 // Urls
 // prettier-ignore
 export const TOUREX_ACCOUNT_TOUR_GUIDE_QUERY_URL = LOCAL_HOST_URL + "/account/tourguide/search?query=";
-export const TOUREX_TOUR_QUERY_URL = LOCAL_HOST_URL + "/tour/search?query=";
+export const TOUREX_TOUR_QUERY_URL = LOCAL_HOST_URL + "/tour/search";
 export const TOUREX_ACCOUNT_URL = LOCAL_HOST_URL + "/account";
 export const TOUREX_TOUR_URL = LOCAL_HOST_URL + "/tour";
 export const TOUREX_TOUR_GUIDE_URL = LOCAL_HOST_URL + "/tourguide";
