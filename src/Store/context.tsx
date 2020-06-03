@@ -49,7 +49,7 @@ class TourexProvider extends React.Component<IProps, IState> {
   }
   async getJSONAsync() {
     let jsonTourGuide = await Action.fetchTourGuidesAsJSONDataByBearerTokenAndQuery("Random");
-    this.props.setTourGuides(jsonTourGuide);
+    // this.props.setTourGuides(jsonTourGuide);
   }
   // componentDidMount() {
   //   let tourguides = this.getJSONAsync();
