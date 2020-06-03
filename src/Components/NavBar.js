@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SignIn from "./auth/SignIn";
 import SignUp from "./auth/SignUp";
 import { checkUser, userSignOut } from "../Store/APIAction";
-import logo from "../Assets/Logo/logo192.png";
+import logo from "../Assets/Logo/TourEx-LogoOnly-Transparent.png";
 import $ from "jquery";
 window.jQuery = $;
 window.$ = $;
@@ -44,7 +44,7 @@ export default class Navbar extends React.Component {
       <>
         <nav className="navbar navbar-expand-md navbar-expand-lg navbar-dark bg-dark sticky-top fixed-top">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#"><img src={logo}/></a>
+                <a className="navbar-brand m-l-40" href="#"><img src={logo}/></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -57,13 +57,13 @@ export default class Navbar extends React.Component {
                             <>
                                 {/* This button will invoke <SignIn> */}
                                 <li className="nav-item active">
-                                  <button type="button" className="btn btn-primary my-2 my-sm-0 m-l-10" data-toggle="modal" data-target="#modalSignIn">
+                                  <button type="button" className="btn my-sm-0 m-l-10" data-toggle="modal" data-target="#modalSignIn">
                                       Sign In
                                   </button>
                                 </li>
                                 {/* This button will invoke <SignIn> */}
                                 <li className="nav-item active">
-                                  <button type="button" className="btn rounded-pill btn-primary my-2 my-sm-0 m-l-20" data-toggle="modal" data-target="#modalSignUp">
+                                  <button type="button" className="btn rounded-pill my-sm-0 m-l-20" data-toggle="modal" data-target="#modalSignUp">
                                       Sign Up
                                   </button>
                                 </li>
@@ -83,7 +83,11 @@ export default class Navbar extends React.Component {
                                       </g>
                                   </g>
                                 </svg>
-                                <a style={{color:'white'}} href="#">Wollongong, NSW</a>
+                                <a style={{color:'white',textDecoration:'none'}} className="m-r-20" href="#">Wollongong, NSW</a>
+                            </li>
+                            <li className="nav-item active">
+                            <img style={{width:'40px',height:'40px'}} src="https://img.icons8.com/bubbles/50/000000/user.png"/>
+                                <a style={{color:'white',textDecoration:'none'}} className="m-l-10" href="#">User</a>
                             </li>
                             <li className="nav-item active">
                             <button type="button" className="btn rounded-pill btn-primary my-2 my-sm-0 m-l-20" onClick={() => this.userSignOutHandler()}>

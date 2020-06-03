@@ -135,13 +135,13 @@ export default class Carousel extends React.Component<IProps, IState> {
                         <div className='row m-t-20'>
                           <div className="col-lg-9">
                           {searchType == 1 && 
-                            <input className="form-control m-r-20" type="date" 
+                            <input className="form-control m-r-16" type="date" 
                               name="dates" value={this.state.dates} onChange={this.handleChange}
                             />
                           }
                           </div>
                           {!hideSearchBtn &&
-                            <div className="col-lg-3" >
+                            <div style={{width:'21%'}} >
                               <button
                                 className="btn btn-block btn-outline-info my-2 my-sm-0"
                                 type="submit">

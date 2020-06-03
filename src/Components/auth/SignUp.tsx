@@ -156,7 +156,7 @@ export default class SignUp extends React.Component<IProps, IState> {
                                 </div>
                                 {!hideSignUpBtn &&
                                 <div className="form-group">
-                                    <button type="submit" className="btn btn-primary" >
+                                    <button style={{backgroundColor:'#ffac42',width:'100%'}} type="submit" className="btn" >
                                     Sign Up
                                     </button>
                                 </div>
