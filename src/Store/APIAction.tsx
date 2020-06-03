@@ -146,6 +146,7 @@ export const fetchTourAsJSONDataByBearerToken = (
   });
 };
 
+// Query to search for tour guides
 export const fetchTourGuidesAsJSONDataByBearerTokenAndQuery = (
   query: string
 ): Promise<Object> => {
@@ -158,6 +159,39 @@ export const fetchTourGuidesAsJSONDataByBearerTokenAndQuery = (
           Constants.TOUREX_ACCOUNT_TOUR_GUIDE_QUERY_URL,
           require("querystring").stringify({
             query: query,
+          })
+        )
+        .then(
+          (response) => {
+            console.log(response.data);
+            resolve(response.data);
+          },
+          (error) => {
+            console.log("FAIL");
+            console.log(error);
+            resolve({});
+          }
+        );
+    } catch (error) {
+      // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
+    }
+  });
+};
+
+// Query to search for tours
+export const fetchToursAsJSONDataByBearerTokenAndQuery = (
+  query: string,
+  date: boolean
+): Promise<Object> => {
+  return new Promise((resolve, reject) => {
+    try {
+      let token = localStorage.getItem("access_token");
+      axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+      axios
+        .get(
+          Constants.TOUREX_TOUR_QUERY_URL,
+          require("querystring").stringify({
+            query: query + "&" + date,
           })
         )
         .then(

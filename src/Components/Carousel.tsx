@@ -4,13 +4,17 @@ import image1 from "../Assets/Images/camel.jpeg";
 import image2 from "../Assets/Images/lagan.jpg";
 import image3 from "../Assets/Images/standing-mountain.jpeg";
 
-import { fetchTourGuidesAsJSONDataByBearerTokenAndQuery } from "../Store/APIAction";
+import {
+  fetchToursAsJSONDataByBearerTokenAndQuery,
+  fetchTourGuidesAsJSONDataByBearerTokenAndQuery,
+} from "../Store/APIAction";
 
 import { TourexConsumer } from "../Store/context";
 
 interface IProps {
-  tourguides: Object[];
+  setTours: Function;
   setTourGuides: Function;
+  setToggleTourAndTourguideContainer: Function;
 }
 interface IState {
   searchQuery: string;
@@ -43,6 +47,10 @@ export default class Carousel extends React.Component<IProps, IState> {
     this.setState(({
       [name]: value,
     } as unknown) as Pick<IState, keyof IState>);
+
+    if (name == "searchType") {
+      this.props.setToggleTourAndTourguideContainer(value == "2"); //tour guides
+    }
   };
 
   private handleSubmit = async (
@@ -58,11 +66,24 @@ export default class Carousel extends React.Component<IProps, IState> {
     if (this.validateForm()) {
       if (searchType == 1) {
         //search for tours
+
+        console.log("DATES: " + this.state.dates);
+        console.log("QUERY: " + this.state.searchQuery);
+
+        let jsonData = {};
+        console.log("START");
+        if (this.state.dates.length > 0) {
+          jsonData = await fetchToursAsJSONDataByBearerTokenAndQuery(this.state.dates, true); //prettier-ignore
+        } else {
+          jsonData = await fetchToursAsJSONDataByBearerTokenAndQuery(searchQuery, false); //prettier-ignore
+        }
+        console.log("END");
+        console.log(jsonData);
+        // this.props.setTourGuides(jsonData);
       } else {
         //search for tour guides
         let jsonData = await fetchTourGuidesAsJSONDataByBearerTokenAndQuery(searchQuery); //prettier-ignore
         this.props.setTourGuides(jsonData);
-        console.log(jsonData);
       }
       // this.setState({ submitSuccess });
       // if (submitSuccess) {
@@ -77,7 +98,7 @@ export default class Carousel extends React.Component<IProps, IState> {
 
   private validateForm(): boolean {
     //Todo more validation?
-    return this.state.searchQuery.length > 0;
+    return this.state.searchQuery.length > 0 || this.state.dates.length > 0;
   }
 
   render() {

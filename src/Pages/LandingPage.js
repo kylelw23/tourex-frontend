@@ -5,8 +5,7 @@ import TourGuideContainer from "../Components/TourGuide/TourGuideContainer.js";
 import TourContainer from "../Components/Tours/TourContainer";
 import { checkUser, userSignOut } from "../Store/APIAction";
 import { TourexConsumer } from "../Store/context";
-import logo from "../Assets/Logo/logo192.png"
-
+import logo from "../Assets/Logo/logo192.png";
 
 export default class LandingPage extends React.Component {
   constructor(props) {
@@ -14,8 +13,8 @@ export default class LandingPage extends React.Component {
     this.state = {
       isUserLoggedIn: false,
     };
-  };
-  componentDidMount(){
+  }
+  componentDidMount() {
     this.checkUser();
   }
   checkUser = async () => {
@@ -24,13 +23,14 @@ export default class LandingPage extends React.Component {
     });
   };
   render() {
-    const { isUserLoggedIn} = this.state
+    const { isUserLoggedIn } = this.state;
     return (
+      //prettier-ignore
       <>
         <TourexConsumer>
           {(value) => {
             // Desconstruction
-            const { tourguides, setTourGuides } = value;
+            const { setToggleTourAndTourguideContainer, toggleTourAndTourguideContainer, tourguides, setTourGuides, tours, setTours } = value;
             return (
               <>
               {!isUserLoggedIn &&
@@ -89,9 +89,15 @@ export default class LandingPage extends React.Component {
               {isUserLoggedIn &&
               <>
                 <Carousel
-                tourguides={tourguides}
-                setTourGuides={setTourGuides} ></Carousel>
-                <TourGuideContainer />
+                  setToggleTourAndTourguideContainer={setToggleTourAndTourguideContainer}
+                  tourguides={tourguides}
+                  setTourGuides={setTourGuides} >  
+                </Carousel>
+                {toggleTourAndTourguideContainer ?
+                  <TourGuideContainer />
+                  :
+                  <TourContainer />
+                }
               </>
               }
               </>
