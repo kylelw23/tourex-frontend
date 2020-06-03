@@ -4,6 +4,13 @@ import profile from '../Assets/Images/kirito-avatar.jpg';
 import background from "../Assets/Images/lagan.jpg"
 
 export default class TourGuideProfile extends React.Component {
+  constructor(props){
+    super(props)
+    // console.log(this.props)
+    this.state ={
+        slug:this.props.match.params.id
+    }
+  }
   render() {
     return (
       <>

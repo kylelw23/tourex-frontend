@@ -42,7 +42,7 @@ class App extends Component {
           <>
             <Navbar />
             <Route exact path="/" component={LandingPage} appProps={{isUserLoggedIn}}/>
-            <Route exact path="/TourGuideProfile/" component={TourGuideProfile}/>
+            <Route exact path="/TourGuideProfile/:id" component={TourGuideProfile}/>
             <Route exact path="/TourDetail/" component={TourDetail}/>
             <Route exact path="/UserProfile" component={UserProfile} appProps={{isUserLoggedIn}} />
             <Footer />

@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function TourGuideCard({ tourguide }) {
   // Destructering
-  const { name, rating, reviews, tours, email } = tourguide;
+  const { name, rating, reviews, tours, email, id } = tourguide;
   return (
+    <Link to={`/TourGuideProfile/${id}`}>
     <div class="card" style={{ width: "60%" }}>
       <div class="row no-gutters stretched-link">
         {/* PHOTO */}
@@ -45,5 +46,6 @@ export default function TourGuideCard({ tourguide }) {
         </div>
       </div>
     </div>
+    </Link>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import profile from '../Assets/Images/random-avatar.jpg';
 import { checkUser, userSignOut } from "../Store/APIAction";
 
@@ -20,6 +20,9 @@ export default class UserProfile extends React.Component {
       };
     render() {
         const { isUserLoggedIn} = this.state
+        // if(isUserLoggedIn){
+        //     return <Redirect to='/'/>
+        // }
     return (
       <>
             <div class="container">

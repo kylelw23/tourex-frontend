@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import * as Constants from "./Constants";
 import * as Action from "./APIAction";
 
-interface IProps {}
+interface IProps {
+  tourguides: Object[];
+  setTourGuides: Function;
+}
 interface IState {
   tourguides: Object[];
   sortedTourguides: Object[];
@@ -25,9 +28,12 @@ interface IContextProps {
 
 const TourexContext = React.createContext<Partial<IProps>>({});
 
-class TourexProvider extends Component {
-  state = {
-    tourguides: [],
+class TourexProvider extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
+    super(props);
+
+    this.state = {
+      tourguides: [],
     sortedTourguides: [],
     tourguideDetail: [],
     tours: [],
@@ -39,13 +45,20 @@ class TourexProvider extends Component {
     isTourGuide: false,
     tourGuideAccount: false,
     userAccount: false,
-    setTourGuides: Function,
-    // isUserLoggedIn: false,
-  };
-  async getJSONAsync() {
-    //let jsonTourGuide = await Action.fetchTourGuidesAsJSONDataByBearerTokenAndQuery("Random");
-    //let jsonTour = await Action.fetchTourAsJSONDataByBearerToken("haha");
+    }
   }
+  async getJSONAsync() {
+    let jsonTourGuide = await Action.fetchTourGuidesAsJSONDataByBearerTokenAndQuery("Random");
+    this.props.setTourGuides(jsonTourGuide);
+  }
+  // componentDidMount() {
+  //   let tourguides = this.getJSONAsync();
+  // }
+//   getTourGuide = (slug) => {
+//     let tempRooms = [...this.state.tourguides];
+//     const tourguide = tempRooms.find(tourguide => tourguide.id === slug);
+//     return tourguide;
+// }
   render() {
     this.getJSONAsync();
     return (
@@ -53,7 +66,6 @@ class TourexProvider extends Component {
         value={{
           ...this.state,
           //   userIsLoggedInHandler: (v) => this.setState({ isUserLoggedIn: v }),
-          setTourGuides: (v: Object) => this.setState({ tourguides: v }),
         }}
       >
         {this.props.children}
