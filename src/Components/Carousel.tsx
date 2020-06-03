@@ -4,10 +4,7 @@ import image1 from "../Assets/Images/camel.jpeg";
 import image2 from "../Assets/Images/lagan.jpg";
 import image3 from "../Assets/Images/standing-mountain.jpeg";
 
-import {
-  grabUserToken,
-  fetchTourGuidesAsJSONDataByBearerTokenAndQuery,
-} from "../Store/APIAction";
+import { fetchTourGuidesAsJSONDataByBearerTokenAndQuery } from "../Store/APIAction";
 
 import { TourexConsumer } from "../Store/context";
 
@@ -121,6 +118,7 @@ export default class Carousel extends React.Component<IProps, IState> {
                       </h2>
                       {/* FORM onSubmit={(e)=>{this.handleSubmit(e)}}*/}
                       <form onSubmit={(e)=>{this.handleSubmit(e)}}>
+                        <text>Search for : </text>
                         <div className="input-group" style={{width:'100%'}}>
                           <div className="input-group-prepend" >
                             <select className="custom-select" name="searchType" value={this.state.searchType} onChange={this.handleSelectChange}>
