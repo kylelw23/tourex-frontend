@@ -48,9 +48,7 @@ class TourexProvider extends Component {
   };
 
   async getJSONAsync() {
-    console.log("WILL LOAD JSON");
     if (this.state.toggleTourAndTourguideContainer) {
-      console.log("only toggle this.");
       let jsonTourGuide = await Action.fetchTourGuidesAsJSONDataByBearerTokenAndQuery(
         "Random"
       );
