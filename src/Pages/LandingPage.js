@@ -91,7 +91,10 @@ export default class LandingPage extends React.Component {
                 <Carousel
                   setToggleTourAndTourguideContainer={setToggleTourAndTourguideContainer}
                   tourguides={tourguides}
-                  setTourGuides={setTourGuides} >  
+                  setTourGuides={setTourGuides}
+                  tours={tours}
+                  setTours={setTours}
+                >  
                 </Carousel>
                 {toggleTourAndTourguideContainer ?
                   <TourGuideContainer />

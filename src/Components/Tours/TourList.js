@@ -18,18 +18,17 @@ export default function TourList(props) {
     );
   }
   return (
-    //prettier-ignore
     <>
       <div>
         {/* Tour guide count */}
         <div className="jumbotron jumbotron-fluid p-t-30" style={{height:'100px'}}>
           <div className="container m-l-200">
-            <h4 className="display-6">There are {props.tourguides.length} tours found</h4>
+            <h4 className="display-6">There are {props.tours.length} tours found</h4>
           </div>
         </div>
 
         {/* Tour guide items */}
-        <div className="container-fluid m-l-200">
+        <div className="container-fluid">
             <div className="row">
                 { 
                 props.tours.map(item => {

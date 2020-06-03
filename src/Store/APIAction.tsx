@@ -183,25 +183,18 @@ export const fetchToursAsJSONDataByBearerTokenAndQuery = (
   query: string,
   date: boolean
 ): Promise<Object> => {
+  console.log("QUERY IS " + Constants.QUERY_TOUR(query, date));
   return new Promise((resolve, reject) => {
     try {
       let token = localStorage.getItem("access_token");
       axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
       axios
-        .get(
-          Constants.TOUREX_TOUR_QUERY_URL,
-          require("querystring").stringify({
-            query: query + "&" + date,
-          })
-        )
+        .get(Constants.TOUREX_TOUR_QUERY_URL, Constants.QUERY_TOUR(query, date))
         .then(
           (response) => {
-            console.log(response.data);
             resolve(response.data);
           },
           (error) => {
-            console.log("FAIL");
-            console.log(error);
             resolve({});
           }
         );

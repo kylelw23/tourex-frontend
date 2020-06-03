@@ -49,6 +49,7 @@ export default class Carousel extends React.Component<IProps, IState> {
     } as unknown) as Pick<IState, keyof IState>);
 
     if (name == "searchType") {
+      console.log("HELLO");
       this.props.setToggleTourAndTourguideContainer(value == "2"); //tour guides
     }
   };
@@ -66,20 +67,13 @@ export default class Carousel extends React.Component<IProps, IState> {
     if (this.validateForm()) {
       if (searchType == 1) {
         //search for tours
-
-        console.log("DATES: " + this.state.dates);
-        console.log("QUERY: " + this.state.searchQuery);
-
         let jsonData = {};
-        console.log("START");
         if (this.state.dates.length > 0) {
           jsonData = await fetchToursAsJSONDataByBearerTokenAndQuery(this.state.dates, true); //prettier-ignore
         } else {
           jsonData = await fetchToursAsJSONDataByBearerTokenAndQuery(searchQuery, false); //prettier-ignore
         }
-        console.log("END");
-        console.log(jsonData);
-        // this.props.setTourGuides(jsonData);
+        this.props.setTours(jsonData);
       } else {
         //search for tour guides
         let jsonData = await fetchTourGuidesAsJSONDataByBearerTokenAndQuery(searchQuery); //prettier-ignore

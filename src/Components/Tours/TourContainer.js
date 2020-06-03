@@ -1,5 +1,5 @@
 import React from "react";
-import TourFilter from "./TourFilter";
+// import TourFilter from "./TourFilter";
 import TourList from "./TourList";
 import { TourexConsumer } from "../../Store/context";
 
