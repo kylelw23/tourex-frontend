@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TourCard from "./TourCard";
 import $ from "jquery";
 window.jQuery = $;
 window.$ = $;
@@ -23,22 +24,22 @@ export default function TourList(props) {
         {/* Tour guide count */}
         <div className="jumbotron jumbotron-fluid p-t-30" style={{height:'100px'}}>
           <div className="container m-l-200">
-            <h4 className="display-6">There are {props.tours.length} local tours near you...</h4>
+            <h4 className="display-6">There are {props.tourguides.length} tours found</h4>
           </div>
         </div>
 
         {/* Tour guide items */}
         <div className="container-fluid m-l-200">
             <div className="row">
-                {/* { 
+                { 
                 props.tours.map(item => {
                   return (
                   <div key={item.id} className="col-lg-6 my-3">
-                    <TourGuideCard tourguide={item}/>
+                    <TourCard tour={item}/>
                   </div>
                   )
                 })
-              } */}
+              }
             </div> 
         </div>
       </div>
