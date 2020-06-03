@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as Constants from "./Constants";
+import LocalStorageService from "./LocalStorageService";
 
 export const fetchTourexAPIToken = (): Promise<Response> => {
   return new Promise((resolve, reject) => {
@@ -30,8 +31,9 @@ export const userSignOut = (): Promise<boolean> => {
   // ): Promise<Response> => {
   return new Promise((resolve, reject) => {
     try {
-      // let currentUser = JSON.stringify(localStorage.getItem("currentUser")); //will return null if nothing is set.
-      localStorage.removeItem("currentUser");
+      console.log("USER IS SIGNING OUT, we now clear tokens");
+      // let currentUser = JSON.stringify(localStorage.getItem("access_token")); //will return null if nothing is set.
+      LocalStorageService.clearToken();
       resolve(true);
     } catch (error) {
       resolve(false);
@@ -46,28 +48,12 @@ export const checkUser = (): Promise<boolean> => {
   // ): Promise<Response> => {
   return new Promise((resolve, reject) => {
     try {
-      let currentUser = localStorage.getItem("currentUser");
+      let currentUser = LocalStorageService.getAccessToken();
+      console.log("currentUser = " + currentUser);
       if (currentUser === null) {
         resolve(false);
       } else {
         resolve(true);
-      }
-    } catch (error) {
-      // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
-    }
-  });
-};
-
-/*******************************************************************************************/
-// User sign out
-export const grabUserToken = (): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    try {
-      let currentUser = JSON.stringify(localStorage.getItem("currentUser"));
-      if (localStorage.getItem("currentUser") !== null) {
-        resolve(currentUser);
-      } else {
-        resolve("");
       }
     } catch (error) {
       // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
@@ -91,9 +77,9 @@ export const fetchUserTokenBySignIn = (
           Constants.AUTH_USER_AND_PASS
         )
         .then((response) => {
-          // return access_token
-          localStorage.setItem("currentUser", response.data.access_token);
-          resolve(response.data.access_token);
+          tokenHandler();
+          LocalStorageService.setToken(response.data);
+          resolve(LocalStorageService.getAccessToken());
           // resolve(true);
         })
         .catch((err) => {
@@ -127,7 +113,7 @@ export const userSignUp = (
           resolve(true);
         })
         .catch((err) => {
-          console.log(err.request.status == 400);
+          console.log(err.request.status === 400);
           resolve(err.request.status);
         });
     } catch (error) {
@@ -165,7 +151,7 @@ export const fetchTourGuidesAsJSONDataByBearerTokenAndQuery = (
 ): Promise<Object> => {
   return new Promise((resolve, reject) => {
     try {
-      let token = localStorage.getItem("currentUser");
+      let token = localStorage.getItem("access_token");
       axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
       axios
         .get(
@@ -189,6 +175,71 @@ export const fetchTourGuidesAsJSONDataByBearerTokenAndQuery = (
       // console.log("Auth.tsx, function grabTourexAPIToken, try catch ERROR: " + error);
     }
   });
+};
+
+export const tokenHandler = () => {
+  console.log("HAHAHAHA");
+  // Add a request interceptor
+  axios.interceptors.request.use(
+    (config) => {
+      const token = LocalStorageService.getAccessToken();
+      if (token) {
+        config.headers["Authorization"] = "Bearer " + token;
+      }
+      // config.headers['Content-Type'] = 'application/json';
+      console.log("config is ");
+      console.log(config);
+      return config;
+    },
+    (error) => {
+      console.log("REJECTED 1");
+      Promise.reject(error);
+    }
+  );
+
+  //Add a response interceptor
+  axios.interceptors.response.use(
+    (response) => {
+      console.log("RETURNING RESPONSE");
+      console.log(response);
+      return response;
+    },
+    function (error) {
+      console.log("WE GOT AN ERROR ON RESPONSE HEADER = " + error);
+      const originalRequest = error.config;
+
+      if (
+        error.response.status === 401 &&
+        originalRequest.url === Constants.AUTH_TOKEN_URL
+      ) {
+        console.log("ERROR WITH ORIG");
+        // Redirect them somewhere????
+        // router.push('/login');
+        return Promise.reject(error);
+      }
+
+      if (error.response.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+        const refreshToken = LocalStorageService.getRefreshToken();
+        console.log("ERROR WITH NOT ORIG");
+
+        return axios
+          .post(Constants.AUTH_TOKEN_URL, {
+            refresh_token: refreshToken,
+          })
+          .then((res) => {
+            if (res.status === 201) {
+              console.log("ITS 201!");
+              LocalStorageService.setToken(res.data);
+              axios.defaults.headers.common["Authorization"] =
+                "Bearer " + LocalStorageService.getAccessToken();
+              return axios(originalRequest);
+            }
+          });
+      }
+      return Promise.reject(error);
+    }
+  );
 };
 
 /*******************************************************************************************/
