@@ -44,11 +44,12 @@ class TourexProvider extends Component {
     setTourGuides: Function,
     setTours: Function,
     setToggleTourAndTourguideContainer: Function,
-    // isUserLoggedIn: false,
   };
 
   async getJSONAsync() {
-    if (this.state.toggleTourAndTourguideContainer) {
+    let isUserLoggedIn = await Action.checkUser();
+    if (this.state.toggleTourAndTourguideContainer && isUserLoggedIn) {
+      console.log("searching");
       let jsonTourGuide = await Action.fetchTourGuidesAsJSONDataByBearerTokenAndQuery(
         "Random"
       );

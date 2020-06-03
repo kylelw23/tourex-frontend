@@ -7,7 +7,7 @@ export default function TourCard({ tour }) {
   return (
     <Link to={`/TourDetail/${id}`}>
       {/* Header */}
-      <div className="card">
+      <div className="card text-secondary">
         <img src="//placehold.it/200" class="img-fluid" alt="" />
         <div className="card-body">
           <div className="row d-flex align-items-center">

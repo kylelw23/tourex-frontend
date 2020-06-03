@@ -21,25 +21,32 @@ export default function TourList(props) {
     <>
       <div>
         {/* Tour guide count */}
-        <div className="jumbotron jumbotron-fluid p-t-30" style={{height:'100px'}}>
+        <div
+          className="jumbotron jumbotron-fluid p-t-30"
+          style={{ height: "100px" }}
+        >
           <div className="container m-l-200">
-            <h4 className="display-6">There are {props.tours.length} tours found</h4>
+            <h4 className="display-6">
+              There{" "}
+              {props.tours.length <= 1
+                ? "is " + props.tours.length + " tour "
+                : "are " + props.tours.length + " tours "}
+              found
+            </h4>
           </div>
         </div>
 
         {/* Tour guide items */}
         <div className="container-fluid">
-            <div className="row">
-                { 
-                props.tours.map(item => {
-                  return (
-                  <div key={item.id} className="col-lg-6 my-3">
-                    <TourCard tour={item}/>
-                  </div>
-                  )
-                })
-              }
-            </div> 
+          <div className="row d-flex justify-content-center">
+            {props.tours.map((item) => {
+              return (
+                <div key={item.id} className="col-lg-5 my-3">
+                  <TourCard tour={item} />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>
