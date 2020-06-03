@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../Assets/Logo/logo192.png"
+import logo from "../Assets/Logo/TourEx-Horizontal-Banner-WhiteTextTransparent.png"
 
 
 export default class Footer extends React.Component {

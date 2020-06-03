@@ -1,9 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,200;1,700&display=swap');
+/* Colour section
+Primary - #90caf9
+P-light - #c3fdff
+p-Dark  - #5d99c6
 
+Secondary - #f47b00
+S -light  - #ffac42
+s- Dark   - #ba4c00
+
+*/  
 body {
   overflow-x: hidden;
   font-family: 'Poppins';
   color: #505962
+}
+
+button {
+  border-color: #5d99c6 !important;
+}
+.btn-tourex {
+  border-color: #5d99c6 !important;
+  background-color: #ffac42;
+  color: white;
+}
+button:hover{
+  background-color:#fabc4a !important;
 }
 
 .offset:before {
@@ -16,13 +37,14 @@ body {
 /*--- NavBars ---*/
 
 .navbar {
+  background-color: #5d99c6 !important;
   text-transform: uppercase;
   letter-spacing: .1rem;
   /* background: rgba(0, 0, 0, .6) !important; */
 }
 
 .navbar-brand img{
-  height: 2rem;
+  height: 40px;
 }
 
 .navbar-nav li{
@@ -32,12 +54,20 @@ body {
   color: white;
   padding-top: .8rem;
 }
-.navbar-dark .navbar-nav .navbar-link.active,
-.navbar-dark .navbar-nav .navbar-link:hover
-{
-  color: #1ebba3;
+.navbar-dark .navbar-nav button.btn{
+  background-color: #ffac42;
 }
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:hover
+{
+  color: #ffac42;
+}
+a:hover{
+  color: #ffac42 !important;
+}
+
 /*--- Carousel ---*/
+
 .carousel-caption {
   position: absolute;
   top: 38%;
@@ -61,6 +91,13 @@ body {
   border-width: medium;
   border-radius: 0;
   font-size: 1.1rem;
+}
+.btn-outline-info{
+  border-color: #5d99c6 !important;
+  color: #5d99c6 !important;
+}
+.carousel-inner button:hover{
+  background-color: #90caf9 !important;
 }
 
 /*============= COURSE SECTION =============*/
@@ -104,7 +141,7 @@ footer {
   margin-top: 1rem;
 }
 footer img {
-  height: 3rem;
+  height: 10rem;
   margin: 1.5rem 0;
 }
 footer a {
@@ -118,6 +155,6 @@ footer svg.svg--inline--fa:hover{
   color:#1ebba3;
 }
 hr.socket {
-  border-top: .2rem solid #1ebba3;
+  border-top: .2rem solid #5d99c6;
   width:100%;
 }

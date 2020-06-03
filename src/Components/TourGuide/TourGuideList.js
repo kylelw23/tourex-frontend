@@ -9,10 +9,10 @@ export default function TourGuideList(props) {
   if(props.tourguides.length ===0){
     return <>
     <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-  <h3>Unfortunately no tour guides matched your search parameters</h3>
-  </div>
-</div>
+      <div class="container">
+      <h3>Unfortunately no tour guides matched your search parameters</h3>
+      </div>
+    </div>
     </>
   }
   return (

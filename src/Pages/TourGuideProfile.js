@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import profile from '../Assets/Images/kirito-avatar.jpg';
+import background from "../Assets/Images/lagan.jpg"
 
 export default class TourGuideProfile extends React.Component {
   render() {
     return (
       <>
-            <div style={{height:'300px'}} class="jumbotron m-0 p-0">
+            <div style={{height:'300px',backgroundImage:'url("../Assets/Images/lagan.jpg")'}} class="jumbotron m-0 p-0">
                 <div class="container m-0 p-0">
                   <div style={{width:'860px'}} className="row h-100 p-t-20 d-flex align-items-center">
                   <div className="col-lg-4 m-l-100 m-t-120">
@@ -19,8 +20,8 @@ export default class TourGuideProfile extends React.Component {
                   </div>
               </div>
                 </div>
-              </div>
-              <div className="row h-100 d-flex m-t-160 m-l-100 m-r-100 ">
+            </div>
+              <div className="row h-100 d-flex m-t-160 m-l-100 m-r-100 m-b-100">
                 <div className="col-lg-8">
                   <div class="row">
                     <div class="col-lg-2 col-sm-6">
@@ -62,8 +63,10 @@ export default class TourGuideProfile extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-4 border">
-                  <div className="border "></div>
+                <div style={{borderRadius:'2px'}} className="col-lg-4 border">
+                  <div className="m-t-50">
+                    <button style={{width:'100%'}} className="btn btn-tourex">Contact</button>
+                  </div>
                 </div>
               </div>
       </>

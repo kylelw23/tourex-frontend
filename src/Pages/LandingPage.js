@@ -80,7 +80,7 @@ export default class LandingPage extends React.Component {
                   <div className="col-12 narrow text-center m-b-50">
                     <h2>Coronavirus update</h2>
                     <p className="lead">The impact of COVID-19 on travel is unprecedented. Like you, we’re monitoring the situation. Rest assured, we’re here to help with questions about your plans.</p>
-                    <a className="" href="https://www.australia.com/en/travel-alerts/coronavirus.html" target="_blank">Learn more about what we’re doing to help</a>
+                    <a style={{color:'#5d99c6'}} href="https://www.australia.com/en/travel-alerts/coronavirus.html" target="_blank">Learn more about what we’re doing to help</a>
                   </div>
                 </div>
                 {/* Footer Section */}
