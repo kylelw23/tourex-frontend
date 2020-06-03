@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import * as Constants from "./Constants";
-// import {
-//   fetchTourGuideAsJSONDataByBearerToken,
-//   fetchTourAsJSONDataByBearerToken,
-//   fetchAccountAsJSONDataByBearerToken,
-// } from "./../Components/auth/Auth";
+import * as Action from "./APIAction";
 
 interface IProps {}
 interface IState {
@@ -46,12 +42,12 @@ class TourexProvider extends Component {
     setTourGuides: Function,
     // isUserLoggedIn: false,
   };
-  componentDidMount() {
-    // fetch(Constants.TOUREX_TOUR_GUIDE_URL)
-    //   .then((res) => res.json())
-    //   .then((json) => console.log(json));
+  async getJSONAsync() {
+    //let jsonTourGuide = await Action.fetchTourGuidesAsJSONDataByBearerTokenAndQuery("Random");
+    //let jsonTour = await Action.fetchTourAsJSONDataByBearerToken("haha");
   }
   render() {
+    this.getJSONAsync();
     return (
       <TourexContext.Provider
         value={{

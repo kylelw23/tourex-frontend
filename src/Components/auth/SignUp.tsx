@@ -1,6 +1,6 @@
 import React from "react";
 // import { Link } from 'react-router-dom';
-import { userSignUp } from "./Auth";
+import { userSignUp } from "../../Store/APIAction";
 import * as Constants from "../../Store/Constants";
 
 interface IProps {}

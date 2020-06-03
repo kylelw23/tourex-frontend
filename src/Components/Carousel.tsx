@@ -1,13 +1,13 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-import image1 from "../Assets/Images/italy_stretched.png";
-import image2 from "../Assets/Images/lagan.png";
-import image3 from "../Assets/Images/sunset-walking.jpg";
+import image1 from "../Assets/Images/camel.jpeg";
+import image2 from "../Assets/Images/lagan.jpg";
+import image3 from "../Assets/Images/standing-mountain.jpeg";
 
 import {
   grabUserToken,
   fetchTourGuidesAsJSONDataByBearerTokenAndQuery,
-} from "./auth/Auth";
+} from "../Store/APIAction";
 
 import { TourexConsumer } from "../Store/context";
 
@@ -65,6 +65,7 @@ export default class Carousel extends React.Component<IProps, IState> {
         //search for tour guides
         let jsonData = await fetchTourGuidesAsJSONDataByBearerTokenAndQuery(searchQuery); //prettier-ignore
         this.props.setTourGuides(jsonData);
+        console.log(jsonData);
       }
       // this.setState({ submitSuccess });
       // if (submitSuccess) {
@@ -158,13 +159,13 @@ export default class Carousel extends React.Component<IProps, IState> {
   
             {/* Slides here */}
             <div className="carousel-item active">
-              <img className="d-block w-100" src={image1} alt="First slide" />
+              <img style ={{width:'100%',height:'450px', objectFit:'cover'}} className="d-block w-100" src={image2} alt="First slide" />
             </div>
             <div className="carousel-item">
-              <img className="d-block w-100" src={image2} alt="Second slide" />
+              <img style ={{width:'100%',height:'450px', objectFit:'cover'}} className="d-block w-100" src={image1} alt="Second slide" />
             </div>
             <div className="carousel-item">
-              <img className="d-block w-100" src={image3} alt="Third slide" />
+              <img style ={{width:'100%',height:'450px', objectFit:'cover'}} className="d-block w-100" src={image3} alt="Third slide" />
             </div>
           </div>
   

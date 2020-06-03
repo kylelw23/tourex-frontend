@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as Constants from "../../Store/Constants";
+import * as Constants from "./Constants";
 
 export const fetchTourexAPIToken = (): Promise<Response> => {
   return new Promise((resolve, reject) => {

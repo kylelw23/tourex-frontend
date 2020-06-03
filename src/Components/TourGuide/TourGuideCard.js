@@ -1,7 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-export default function TourGuideCard() {
+export default function TourGuideCard({tourguide}) {
+    // Destructering
+    const {name, rating,reviews, tours} = tourguide
+    console.log(tourguide);
     return (
         <div class="card" style={{width:'60%'}}>
         <div class="row no-gutters stretched-link">

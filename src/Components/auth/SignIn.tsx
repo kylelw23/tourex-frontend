@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 // import { Link } from "react-router-dom";
 // import SignUp from "./SignUp";
 import * as Constants from "../../Store/Constants";
-import { fetchUserTokenBySignIn } from "./Auth";
+import { fetchUserTokenBySignIn } from "../../Store/APIAction";
 
 interface IProps {
   userIsLoggedInHandler: Function;

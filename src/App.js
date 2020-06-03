@@ -7,6 +7,8 @@ import LandingPage from "./Pages/LandingPage";
 import TourGuideProfile from "./Pages/TourGuideProfile";
 import TourDetail from "./Pages/TourDetail";
 import UserProfile from "./Pages/UserProfile";
+import Footer from "./Pages/Footer";
+import NoMatch from "./Pages/Error";
 
 // import { fetchTourexAPIToken } from "./Components/auth/Auth";
 import Navbar from "./Components/NavBar";
@@ -29,6 +31,7 @@ function App() {
           <Route exact path="/TourGuideProfile" component={TourGuideProfile}/>
           <Route exact path="/TourDetail" component={TourDetail}/>
           <Route exact path="/UserProfile" component={UserProfile}/>
+          <Footer />
         </>
       </Switch>
     </React.Fragment>
