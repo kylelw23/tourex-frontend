@@ -151,7 +151,7 @@ export default class SignUp extends React.Component<IProps, IState> {
                                 <div className="form-check m-l-8 m-t-8 m-b-8">
                                     <input className="form-check-input" type="checkbox" id="gridCheck"/>
                                     <label className="form-check-label" htmlFor="gridCheck">
-                                    To sign up an account, you should agree to our Term and Conditions and Privacy Policy
+                                    I agree to the Google <a href="https://policies.google.com/terms?hl=en-US" target="_blank">Terms of Service</a> and <a href="https://policies.google.com/privacy?hl=en-US" target="_blank">Privacy Policy</a>
                                     </label>
                                 </div>
                                 {!hideSignUpBtn &&
