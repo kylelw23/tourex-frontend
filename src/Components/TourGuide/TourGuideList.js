@@ -6,14 +6,16 @@ window.$ = $;
 global.jQuery = $;
 
 export default function TourGuideList(props) {
-  if(props.tourguides.length ===0){
-    return <>
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-      <h3>Unfortunately no tour guides matched your search parameters</h3>
-      </div>
-    </div>
-    </>
+  if (props.tourguides.length === 0) {
+    return (
+      <>
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h3>Unfortunately no tour guides matched your search parameters</h3>
+          </div>
+        </div>
+      </>
+    );
   }
   return (
     //prettier-ignore
@@ -28,17 +30,17 @@ export default function TourGuideList(props) {
 
         {/* Tour guide items */}
         <div className="container-fluid m-l-200">
-          <div className="row">
-              {/* { 
+            <div className="row">
+                { 
                 props.tourguides.map(item => {
                   return (
-                  <div className="col-lg-6">
-                    <TourGuideCard key={item.id} tourguide={item}/>
+                  <div key={item.id} className="col-lg-6 my-3">
+                    <TourGuideCard tourguide={item}/>
                   </div>
                   )
                 })
-              } */}
-          </div>
+              }
+            </div> 
         </div>
       </div>
     </>
