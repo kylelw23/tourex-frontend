@@ -39,19 +39,20 @@ export default class Navbar extends React.Component {
 
   render() {
     const { isUserLoggedIn } = this.state;
+    console.log(this.state);
     return (
       // prettier-ignore
       <>
         <nav className="navbar navbar-expand-md navbar-expand-lg navbar-dark bg-dark sticky-top fixed-top">
             <div className="container-fluid">
-                <a className="navbar-brand m-l-40" href="#"><img src={logo}/></a>
+                <a className="navbar-brand m-l-40" href="/"><img src={logo}/></a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarResponsive">
                     <ul className="navbar-nav ml-auto my-2 my-lg-0">
                         <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                            <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
                         </li>
                         {!isUserLoggedIn && 
                             <>
@@ -87,7 +88,7 @@ export default class Navbar extends React.Component {
                             </li>
                             <li className="nav-item active">
                             <img style={{width:'40px',height:'40px'}} src="https://img.icons8.com/bubbles/50/000000/user.png"/>
-                                <a style={{color:'white',textDecoration:'none'}} className="m-l-10" href="#">User</a>
+                                <a style={{color:'white',textDecoration:'none'}} className="m-l-10" href="/UserProfile" >User</a>
                             </li>
                             <li className="nav-item active">
                             <button type="button" className="btn rounded-pill btn-primary my-2 my-sm-0 m-l-20" onClick={() => this.userSignOutHandler()}>

@@ -18,7 +18,11 @@ body {
 button {
   border-color: #5d99c6 !important;
 }
-
+.btn-tourex {
+  border-color: #5d99c6 !important;
+  background-color: #ffac42;
+  color: white;
+}
 button:hover{
   background-color:#fabc4a !important;
 }

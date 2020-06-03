@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect, Component} from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import "./Ultil.css";
@@ -9,33 +9,48 @@ import TourDetail from "./Pages/TourDetail";
 import UserProfile from "./Pages/UserProfile";
 import Footer from "./Pages/Footer";
 import NoMatch from "./Pages/Error";
+import { checkUser, userSignOut } from "./Store/APIAction";
 
 // import { fetchTourexAPIToken } from "./Components/auth/Auth";
 import Navbar from "./Components/NavBar";
 
-function App() {
-  const [getToken, setToken] = React.useState("");
-
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isUserLoggedIn: false,
+    };
+  }
+  componentDidMount() {
+    this.checkUser();
+  };
+  checkUser = async () => {
+    this.setState({
+      isUserLoggedIn: await checkUser(),
+    });
+  };
   // delete this later, just for testings.
   // async function grabToken() {
   //   let token = await fetchTourexAPIToken();
   //   setToken("token is " + token);
   // }
-
-  return (
-    <React.Fragment>
-      <Switch>
-        <>
-          <Navbar />
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/TourGuideProfile" component={TourGuideProfile}/>
-          <Route exact path="/TourDetail" component={TourDetail}/>
-          <Route exact path="/UserProfile" component={UserProfile}/>
-          <Footer />
-        </>
-      </Switch>
-    </React.Fragment>
-  );
+  render(){
+    const { isUserLoggedIn } = this.state;
+    return (
+      <React.Fragment>
+        <Switch>
+          <>
+            <Navbar />
+            <Route exact path="/" component={LandingPage} appProps={{isUserLoggedIn}}/>
+            <Route exact path="/TourGuideProfile/" component={TourGuideProfile}/>
+            <Route exact path="/TourDetail/" component={TourDetail}/>
+            <Route exact path="/UserProfile" component={UserProfile} appProps={{isUserLoggedIn}} />
+            <Footer />
+          </>
+        </Switch>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
