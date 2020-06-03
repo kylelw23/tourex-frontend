@@ -31,7 +31,6 @@ export const userSignOut = (): Promise<boolean> => {
   // ): Promise<Response> => {
   return new Promise((resolve, reject) => {
     try {
-      console.log("USER IS SIGNING OUT, we now clear tokens");
       // let currentUser = JSON.stringify(localStorage.getItem("access_token")); //will return null if nothing is set.
       LocalStorageService.clearToken();
       resolve(true);
@@ -49,7 +48,6 @@ export const checkUser = (): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     try {
       let currentUser = LocalStorageService.getAccessToken();
-      console.log("currentUser = " + currentUser);
       if (currentUser === null) {
         resolve(false);
       } else {

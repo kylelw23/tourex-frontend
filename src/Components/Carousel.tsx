@@ -49,7 +49,6 @@ export default class Carousel extends React.Component<IProps, IState> {
     } as unknown) as Pick<IState, keyof IState>);
 
     if (name == "searchType") {
-      console.log("HELLO");
       this.props.setToggleTourAndTourguideContainer(value == "2"); //tour guides
     }
   };
