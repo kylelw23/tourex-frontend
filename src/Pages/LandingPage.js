@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Carousel from "../Components/Carousel";
 import TourGuideContainer from "../Components/TourGuide/TourGuideContainer.js";
 import TourContainer from "../Components/Tours/TourContainer";
@@ -24,6 +25,7 @@ export default class LandingPage extends React.Component {
   };
   render() {
     const { isUserLoggedIn } = this.state;
+    console.log(this.state);
     return (
       //prettier-ignore
       <>
@@ -48,7 +50,7 @@ export default class LandingPage extends React.Component {
                       <div className="carousel-caption text-center">
                           <h1>Welcome to TourEx</h1>
                           <h3>Find your own tour</h3>
-                          <a className="btn btn-outline-light btn-lg" href>Get Started</a>
+                          <a className="btn btn-outline-light btn-lg">Get Started</a>
                       </div>
                       <video style ={{width:'100%',height:'600px', objectFit:'cover'}} className="video-fluid" autoPlay loop muted>
                         <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />

@@ -33,13 +33,14 @@ export default class Navbar extends React.Component {
   userSignOutHandler = async () => {
     let success = await userSignOut();
     if (success) {
-      return <Redirect to="http://localhost:3000" />;
+      return <Redirect to="http://localhost:3000/" />;
     }
+    return <Redirect to="http://localhost:3000/" />;
   };
 
   render() {
     const { isUserLoggedIn } = this.state;
-    console.log(this.state);
+    // console.log(this.state);
     return (
       // prettier-ignore
       <>

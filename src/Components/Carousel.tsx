@@ -132,7 +132,7 @@ export default class Carousel extends React.Component<IProps, IState> {
                       </h2>
                       {/* FORM onSubmit={(e)=>{this.handleSubmit(e)}}*/}
                       <form onSubmit={(e)=>{this.handleSubmit(e)}}>
-                        <text>Search for : </text>
+                        <label>Search for : </label>
                         <div className="input-group" style={{width:'100%'}}>
                           <div className="input-group-prepend" >
                             <select className="custom-select" name="searchType" value={this.state.searchType} onChange={this.handleSelectChange}>

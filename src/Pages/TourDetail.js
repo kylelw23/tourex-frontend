@@ -7,6 +7,13 @@ import tour4 from '../Assets/Images/TourImages/tour4.jpg';
 import tour5 from '../Assets/Images/TourImages/tour5.jpg';
 
 export default class TourDetail extends React.Component {
+  constructor(props) {
+    super(props);
+    // console.log(this.props)
+    this.state = {
+      slug: this.props.match.params.id,
+    };
+  }
   render() {
     return (
       <>
